@@ -1,4 +1,4 @@
-package com.project.springbootdemo.model.jpa;
+package com.project.springbootdemo.model;
 
 import lombok.Getter;
 import lombok.Setter;

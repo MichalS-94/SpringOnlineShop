@@ -1,25 +1,26 @@
-package com.project.springbootdemo.model.jpa;
+package com.project.springbootdemo.model;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @ToString
-public class Product {
-
+public class Bucket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String name;
-    private String group;
-    private double price;
 
     @OneToOne
-    private Auction auction;
+    private User user;
+
+    @OneToMany(mappedBy = "bucket")
+    private List<Auction> auctions = new ArrayList<>();
 
 }

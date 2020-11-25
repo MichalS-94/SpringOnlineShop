@@ -1,26 +1,29 @@
-package com.project.springbootdemo.model.jpa;
+package com.project.springbootdemo.model;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @ToString
-public class Bucket {
+@Embeddable
+public class Address {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    private String country;
+    private String city;
+    private String street;
+    private String zipCode;
+    private String number;
 
     @OneToOne
     private User user;
 
-    @OneToMany(mappedBy = "bucket")
-    private List<Auction> auctions = new ArrayList<>();
 
 }

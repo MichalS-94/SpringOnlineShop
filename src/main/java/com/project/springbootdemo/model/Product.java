@@ -1,4 +1,4 @@
-package com.project.springbootdemo.model.jpa;
+package com.project.springbootdemo.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,20 +10,16 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-public class Auction {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    private String name;
     private String group;
+    private double price;
 
     @OneToOne
-    private Product product;
-
-    @ManyToOne
-    private User user;
-
-    @ManyToOne
-    private Bucket bucket;
+    private Auction auction;
 
 }

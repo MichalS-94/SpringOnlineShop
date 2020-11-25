@@ -1,4 +1,4 @@
-package com.project.springbootdemo.model.jpa;
+package com.project.springbootdemo.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,20 +10,20 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-@Embeddable
-public class Address {
+public class Auction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String country;
-    private String city;
-    private String street;
-    private String zipCode;
-    private String number;
+    private String group;
 
     @OneToOne
+    private Product product;
+
+    @ManyToOne
     private User user;
 
+    @ManyToOne
+    private Bucket bucket;
 
 }
