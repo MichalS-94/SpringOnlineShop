@@ -12,6 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@Table(name = "bucket")
 public class Bucket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

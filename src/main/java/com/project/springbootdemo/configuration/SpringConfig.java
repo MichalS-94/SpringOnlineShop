@@ -1,5 +1,6 @@
 package com.project.springbootdemo.configuration;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -54,5 +55,8 @@ public class SpringConfig {
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
         return new PersistenceExceptionTranslationPostProcessor();
     }
+
+    @Bean
+    public ModelMapper modelMapper() { return new ModelMapper();}
 
 }

@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
+@Table(name = "auction")
 public class Auction {
 
     @Id
