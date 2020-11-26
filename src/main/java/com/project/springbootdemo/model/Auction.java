@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-@Table(name = "auction")
+@Table(name = "auctions")
 public class Auction {
 
     @Id
@@ -18,13 +18,13 @@ public class Auction {
     private long id;
     private String group;
 
-    @OneToOne
-    private Product product;
-
-    @ManyToOne
-    private User user;
-
-    @ManyToOne
-    private Bucket bucket;
+//    @OneToOne
+//    private Product product;
+//
+//    @ManyToOne
+//    private User user;
+//
+//    @ManyToOne
+//    private Bucket bucket;
 
 }

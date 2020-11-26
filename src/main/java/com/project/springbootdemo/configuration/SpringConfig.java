@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @ComponentScan(basePackages = {"com.project.springbootdemo.configuration", "com.project.springbootdemo.service"})
-@EnableJpaRepositories
+@EnableJpaRepositories ("com.project.springbootdemo.repository")
 @EnableTransactionManagement
 public class SpringConfig {
 
@@ -38,7 +38,7 @@ public class SpringConfig {
         LocalContainerEntityManagerFactoryBean entityManager = new LocalContainerEntityManagerFactoryBean();
         entityManager.setDataSource(getDataSource());
         entityManager.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        entityManager.setPackagesToScan("model");
+        entityManager.setPackagesToScan("com.project.springbootdemo.model");
 
         return entityManager;
     }

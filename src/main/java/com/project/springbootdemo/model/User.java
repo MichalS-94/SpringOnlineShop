@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@Table(name = "user")
+@Table(name = "userr")
 public class User {
 
     @Id
@@ -25,13 +25,13 @@ public class User {
     private String password;
 
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Auction> auctions = new ArrayList<>();
-
-    @Embedded
-    private Address address;
-
-    @OneToOne
-    private Bucket bucket;
+//    @OneToMany(mappedBy = "userr", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<Auction> auctions = new ArrayList<>();
+//
+//    @OneToOne
+//    private Address address;
+//
+//    @OneToOne
+//    private Bucket bucket;
 
 }

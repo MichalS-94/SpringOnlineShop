@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-@Embeddable
+@Table(name = "address")
 public class Address {
 
     @Id
@@ -22,8 +22,8 @@ public class Address {
     private String zipCode;
     private String number;
 
-    @OneToOne
-    private User user;
+//    @OneToOne
+//    private User user;
 
 
 }
