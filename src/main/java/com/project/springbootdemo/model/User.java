@@ -25,10 +25,10 @@ public class User {
     private String password;
 
 
-    @OneToMany(mappedBy = "userr", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "userr", fetch = FetchType.EAGER)
     private List<Auction> auctions = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
     @OneToOne

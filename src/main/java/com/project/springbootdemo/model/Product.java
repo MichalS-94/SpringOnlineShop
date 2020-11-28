@@ -17,10 +17,10 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    private String group;
+    private String category;
     private double price;
 
-    @OneToOne
+    @OneToOne (mappedBy = "product")
     private Auction auction;
 
 }

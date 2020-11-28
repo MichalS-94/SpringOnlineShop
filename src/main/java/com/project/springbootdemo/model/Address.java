@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-@Table(name = "address")
 public class Address {
 
     @Id
@@ -19,10 +18,11 @@ public class Address {
     private String country;
     private String city;
     private String street;
+    @Column(name = "zip_code")
     private String zipCode;
     private String number;
 
-    @OneToOne
+    @OneToOne(mappedBy = "address")
     private User userr;
 
 

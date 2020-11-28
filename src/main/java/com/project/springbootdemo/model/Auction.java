@@ -10,21 +10,20 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-@Table(name = "auctions")
 public class Auction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String group;
+    private String type;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Product product;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private User userr;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Bucket bucket;
 
 }
