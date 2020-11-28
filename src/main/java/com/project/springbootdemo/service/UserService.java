@@ -1,7 +1,6 @@
 package com.project.springbootdemo.service;
 
 import com.project.springbootdemo.repository.UserRepository;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 
@@ -9,18 +8,21 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private UserRepository userRepository;
 
-    public UserService(ModelMapper modelMapper, UserRepository userRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     public void saveUser(){
-        com.project.springbootdemo.model.User dupa = new com.project.springbootdemo.model.User();
-        dupa.setName("Jan");
-        dupa.setSurname("Kowalski");
-        dupa.setLogin("KowalskiJ");
-        dupa.setPassword("asd");
+        com.project.springbootdemo.model.User user1 = new com.project.springbootdemo.model.User();
+        user1.setName("Jan");
+        user1.setSurname("Kowalski");
+        user1.setLogin("KowalskiJ");
+        user1.setPassword("asd");
+        userRepository.save(user1);
+    }
 
-        userRepository.save(dupa);
+    public void removeUser(Long id){
+        userRepository.deleteById(id);
     }
 
 }

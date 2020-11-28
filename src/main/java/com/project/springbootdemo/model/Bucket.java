@@ -18,10 +18,10 @@ public class Bucket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-//    @OneToOne
-//    private User user;
-//
-//    @OneToMany(mappedBy = "bucket")
-//    private List<Auction> auctions = new ArrayList<>();
+    @OneToOne
+    private User userr;
+
+    @OneToMany(mappedBy = "bucket")
+    private List<Auction> auctions = new ArrayList<>();
 
 }

@@ -22,8 +22,8 @@ public class Address {
     private String zipCode;
     private String number;
 
-//    @OneToOne
-//    private User user;
+    @OneToOne
+    private User userr;
 
 
 }

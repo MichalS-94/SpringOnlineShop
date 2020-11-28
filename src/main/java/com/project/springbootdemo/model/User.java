@@ -25,13 +25,13 @@ public class User {
     private String password;
 
 
-//    @OneToMany(mappedBy = "userr", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<Auction> auctions = new ArrayList<>();
-//
-//    @OneToOne
-//    private Address address;
-//
-//    @OneToOne
-//    private Bucket bucket;
+    @OneToMany(mappedBy = "userr", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Auction> auctions = new ArrayList<>();
+
+    @OneToOne
+    private Address address;
+
+    @OneToOne
+    private Bucket bucket;
 
 }

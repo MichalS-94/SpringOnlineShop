@@ -18,13 +18,13 @@ public class Auction {
     private long id;
     private String group;
 
-//    @OneToOne
-//    private Product product;
-//
-//    @ManyToOne
-//    private User user;
-//
-//    @ManyToOne
-//    private Bucket bucket;
+    @OneToOne
+    private Product product;
+
+    @ManyToOne
+    private User userr;
+
+    @ManyToOne
+    private Bucket bucket;
 
 }

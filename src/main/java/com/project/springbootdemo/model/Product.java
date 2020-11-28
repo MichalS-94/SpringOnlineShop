@@ -20,7 +20,7 @@ public class Product {
     private String group;
     private double price;
 
-//    @OneToOne
-//    private Auction auction;
+    @OneToOne
+    private Auction auction;
 
 }
