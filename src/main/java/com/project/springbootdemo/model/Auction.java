@@ -20,10 +20,10 @@ public class Auction {
     @OneToOne(cascade = CascadeType.ALL)
     private Product product;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private User userr;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Bucket bucket;
+//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    private Bucket bucket;
 
 }

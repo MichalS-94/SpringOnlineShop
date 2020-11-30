@@ -7,11 +7,11 @@ import com.project.springbootdemo.model.User;
 import com.project.springbootdemo.model.dto.UserDTO;
 import com.project.springbootdemo.repository.UserRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -19,10 +19,12 @@ import java.util.stream.Collectors;
 public class UserService {
     private UserRepository userRepository;
     private ModelMapper modelMapper;
+    private PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, ModelMapper modelMapper) {
+    public UserService(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public void saveUser(){
@@ -36,18 +38,6 @@ public class UserService {
         product2.setCategory("Clothes");
         product2.setPrice(50);
 
-        Auction auction1 = new Auction();
-        auction1.setType("auction");
-        auction1.setProduct(product1);
-
-        Auction auction2 = new Auction();
-        auction2.setType("Buy now");
-        auction2.setProduct(product2);
-
-        List<Auction> auctionList = new ArrayList<>();
-        auctionList.add(auction1);
-        auctionList.add(auction2);
-
         Address address1 = new Address();
         address1.setCountry("Poland");
         address1.setCity("Krakow");
@@ -59,9 +49,25 @@ public class UserService {
         user1.setName("Jan");
         user1.setSurname("Kowalski");
         user1.setLogin("KowalskiJ");
-        user1.setPassword("asd");
+        user1.setPassword(passwordEncoder.encode("asd"));
         user1.setAddress(address1);
+
+        Auction auction1 = new Auction();
+        auction1.setType("auction");
+        auction1.setProduct(product1);
+        auction1.setUserr(user1);
+
+        Auction auction2 = new Auction();
+        auction2.setType("Buy now");
+        auction2.setProduct(product2);
+        auction2.setUserr(user1);
+
+        List<Auction> auctionList = new ArrayList<>();
+        auctionList.add(auction1);
+        auctionList.add(auction2);
+
         user1.setAuctions(auctionList);
+
         userRepository.save(user1);
     }
 

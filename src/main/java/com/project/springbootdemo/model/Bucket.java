@@ -21,7 +21,7 @@ public class Bucket {
     @OneToOne
     private User userr;
 
-    @OneToMany(mappedBy = "bucket")
-    private List<Auction> auctions = new ArrayList<>();
+//    @OneToMany(mappedBy = "bucket", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    private List<Auction> auctionss = new ArrayList<>();
 
 }

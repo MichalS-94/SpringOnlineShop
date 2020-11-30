@@ -25,7 +25,7 @@ public class User {
     private String password;
 
 
-    @OneToMany(mappedBy = "userr", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "userr", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Auction> auctions = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL)
