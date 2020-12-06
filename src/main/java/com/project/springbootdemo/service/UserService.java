@@ -1,9 +1,6 @@
 package com.project.springbootdemo.service;
 
-import com.project.springbootdemo.model.Address;
-import com.project.springbootdemo.model.Auction;
-import com.project.springbootdemo.model.Product;
-import com.project.springbootdemo.model.User;
+import com.project.springbootdemo.model.*;
 import com.project.springbootdemo.model.dto.AddressDTO;
 import com.project.springbootdemo.model.dto.ProductDTO;
 import com.project.springbootdemo.model.dto.UserDTO;
@@ -73,6 +70,12 @@ public class UserService {
         auctionList.add(auction2);
 
         user1.setAuctions(auctionList);
+
+        Bucket bucket = new Bucket();
+        bucket.setUserr(user1);
+        bucket.setAuctionsInBucket(auctionList);
+
+        user1.setBucket(bucket);
 
         userRepository.save(user1);
     }

@@ -18,7 +18,7 @@
     </thead>
     <tbody>
     <tr th:each="product:${productList}">
-        <form action="/deleteproduct" method="post" , th:object="${product}">
+        <form action="/deleteproduct" method="post" th:object="${product}">
             <td type="number" th:text="${product.id}"></td>
             <td th:text="${product.name}"/>
             <td th:text="${product.category}"/>

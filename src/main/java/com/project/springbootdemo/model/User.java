@@ -32,7 +32,7 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
-//    @OneToOne
-//    private Bucket bucket;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Bucket bucket;
 
 }

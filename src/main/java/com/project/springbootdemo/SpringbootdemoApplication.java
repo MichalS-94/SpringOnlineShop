@@ -14,7 +14,7 @@ public class SpringbootdemoApplication {
         System.out.println("Test");
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
         UserService userService = context.getBean(UserService.class);
-//        userService.saveUser();
+        userService.saveUser();
 //        userService.removeUser(59L);
 //        userService.removeAllUsers();
 //        System.out.println(userService.getAllUsers());
