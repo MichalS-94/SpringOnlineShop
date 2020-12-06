@@ -18,8 +18,8 @@ public class Bucket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne
-    private User userr;
+//    @OneToOne
+//    private User userr;
 
 //    @OneToMany(mappedBy = "bucket", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //    private List<Auction> auctionss = new ArrayList<>();

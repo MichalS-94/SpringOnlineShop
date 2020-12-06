@@ -23,6 +23,7 @@ public class User {
     private String surname;
     private String login;
     private String password;
+    private String email;
 
 
     @OneToMany(mappedBy = "userr", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -31,7 +32,7 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
-    @OneToOne
-    private Bucket bucket;
+//    @OneToOne
+//    private Bucket bucket;
 
 }

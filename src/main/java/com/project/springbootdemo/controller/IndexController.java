@@ -8,8 +8,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class IndexController {
-    @GetMapping(value = {"/","/index"})
-    public ModelAndView test() {
+    @GetMapping(value = {"/", "/index"})
+    public ModelAndView index() {
         Authentication authentication = SecurityContextHolder.getContext()
                 .getAuthentication();
 
@@ -17,5 +17,8 @@ public class IndexController {
     }
 
     @GetMapping("/login")
-    public String login(){ return "login"; }
+    public String login() {
+        return "login";
+    }
+
 }

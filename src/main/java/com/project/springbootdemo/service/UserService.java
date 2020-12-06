@@ -4,7 +4,10 @@ import com.project.springbootdemo.model.Address;
 import com.project.springbootdemo.model.Auction;
 import com.project.springbootdemo.model.Product;
 import com.project.springbootdemo.model.User;
+import com.project.springbootdemo.model.dto.AddressDTO;
+import com.project.springbootdemo.model.dto.ProductDTO;
 import com.project.springbootdemo.model.dto.UserDTO;
+import com.project.springbootdemo.repository.ProductRepository;
 import com.project.springbootdemo.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,11 +23,13 @@ public class UserService {
     private UserRepository userRepository;
     private ModelMapper modelMapper;
     private PasswordEncoder passwordEncoder;
+    private ProductRepository productRepository;
 
-    public UserService(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, ProductRepository productRepository) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
+        this.productRepository = productRepository;
     }
 
     public void saveUser(){
@@ -50,6 +55,7 @@ public class UserService {
         user1.setSurname("Kowalski");
         user1.setLogin("KowalskiJ");
         user1.setPassword(passwordEncoder.encode("asd"));
+        user1.setEmail("kowalskij@gmail.com");
         user1.setAddress(address1);
 
         Auction auction1 = new Auction();
@@ -83,12 +89,39 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
+    public List<ProductDTO> getAllProducts() {
+        return productRepository
+                .findAll()
+                .stream()
+                .map(product -> modelMapper.map(product, ProductDTO.class))
+                .collect(Collectors.toList());
+    }
+    public void deleteProduct(Long id) {
+        productRepository.deleteById(id);
+    }
+
     public void removeUser(Long id){
         userRepository.deleteById(id);
     }
 
     public void removeAllUsers(){
         userRepository.deleteAll();
+    }
+
+    public void addUser(UserDTO userDTO){
+        User user = modelMapper.map(userDTO, User.class);
+        user.setName(userDTO.getName());
+        user.setSurname(userDTO.getSurname());
+        user.setLogin(userDTO.getLogin());
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        user.setEmail(userDTO.getEmail());
+//        Address address = modelMapper.map(addressDTO, Address.class);
+//        address.setNumber(addressDTO.getNumber());
+//        address.setZipCode(addressDTO.getZipCode());
+//        address.setStreet(addressDTO.getStreet());
+//        address.setCity(addressDTO.getCity());
+//        user.setAddress(address);
+        userRepository.save(user);
     }
 
 }

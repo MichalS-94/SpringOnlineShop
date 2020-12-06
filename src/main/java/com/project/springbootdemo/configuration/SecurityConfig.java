@@ -4,7 +4,6 @@ package com.project.springbootdemo.configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -52,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         auth.jdbcAuthentication()
                 .usersByUsernameQuery("SELECT U.LOGIN, U.PASSWORD, 1 FROM USERR U WHERE U.LOGIN=?")
-                .authoritiesByUsernameQuery("SELECT U.LOGIN, 'ROLE_USER', 1 FROM USERR WHERE U.LOGIN=?")
+                .authoritiesByUsernameQuery("SELECT U.LOGIN, 'ROLE_USER', 1 FROM USERR U WHERE U.LOGIN=?")
                 .dataSource(dataSource)
                 .passwordEncoder(passwordEncoder);
     }
